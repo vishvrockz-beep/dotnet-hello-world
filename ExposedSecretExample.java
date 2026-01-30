@@ -13,7 +13,7 @@ public class ExposedSecretExample {
     private static final String AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
 
     // GitHub token-like pattern (TEST ONLY)
-    private static final String GITHUB_TOKEN = "ghp_TESTTOKEN012345678901234567890";
+    private static final String GITHUB_TOKEN = "ghp_000000000000000000000000000000000000";
 
     // Slack bot token-like pattern (TEST ONLY)
     private static final String SLACK_TOKEN = "xoxb-TEST-123456789012-ABCDEF";
