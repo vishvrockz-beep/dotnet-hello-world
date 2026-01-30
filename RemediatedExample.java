@@ -1,28 +1,25 @@
 package com.example;
 
 /*
- WARNING: This file intentionally contains several TEST/DUMMY tokens
- for the sole purpose of exercising secret scanning. THESE ARE
- NON-FUNCTIONAL EXAMPLES — do NOT use these values in production.
+ Remediated example: read secret from environment variable and mask it in logs.
+ This is the recommended pattern: never hard-code secrets in source.
 */
-public class ExposedSecretExample {
-    // AWS-like example (Access Key ID pattern + Secret Access Key pattern)
-    // TEST ONLY
-    private static final String AWS_ACCESS_KEY_ID = "AKIAAAAAAAAAAAAAAAA";
-    // TEST ONLY (example from AWS docs)
-    private static final String AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
-
-    // GitHub token-like pattern (TEST ONLY)
-    private static final String GITHUB_TOKEN = "ghp_TESTTOKEN012345678901234567890";
-
-    // Slack bot token-like pattern (TEST ONLY)
-    private static final String SLACK_TOKEN = "xoxb-TEST-123456789012-ABCDEF";
+public class RemediatedExample {
+    private static final String API_KEY = System.getenv("API_KEY");
 
     public static void main(String[] args) {
-        System.out.println("TEST tokens (do NOT use in production):");
-        System.out.println("AWS_ACCESS_KEY_ID: " + AWS_ACCESS_KEY_ID);
-        System.out.println("AWS_SECRET_ACCESS_KEY: " + AWS_SECRET_ACCESS_KEY);
-        System.out.println("GITHUB_TOKEN: " + GITHUB_TOKEN);
-        System.out.println("SLACK_TOKEN: " + SLACK_TOKEN);
+        if (API_KEY == null || API_KEY.isEmpty()) {
+            System.err.println("API_KEY not set. Please set environment variable.");
+            System.exit(1);
+        }
+        System.out.println("API key loaded from environment (masked): " + mask(API_KEY));
+        // Use the API_KEY with your client without printing the raw value.
+    }
+
+    private static String mask(String s) {
+        if (s == null) return null;
+        int len = s.length();
+        if (len <= 8) return "********";
+        return s.substring(0, 4) + "****" + s.substring(len - 4);
     }
 }
