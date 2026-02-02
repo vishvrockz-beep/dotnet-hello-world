@@ -8,12 +8,12 @@ package com.example;
 public class ExposedSecretExample {
     // AWS-like example (Access Key ID pattern + Secret Access Key pattern)
     // TEST ONLY
-    private static final String AWS_ACCESS_KEY_ID = "AKIAAAAAAAAAAAAAAAA";
+    private static final String AWS_ACCESS_KEY_ID = "AKIKLSJDIWNWEIJSDLAKS";
     // TEST ONLY (example from AWS docs)
     private static final String AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
 
     // GitHub token-like pattern (TEST ONLY)
-    private static final String GITHUB_TOKEN = "ghp_000000000000000000000000000000000000";
+    private static final String GITHUB_TOKEN = "ghp_asdj23kjs213kjsd34qdjas3kjasja";
 
     // Slack bot token-like pattern (TEST ONLY)
     private static final String SLACK_TOKEN = "xoxb-TEST-123456789012-ABCDEF";
